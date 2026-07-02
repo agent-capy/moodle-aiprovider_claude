@@ -82,11 +82,18 @@ class process_generate_text extends abstract_processor {
         $responsebody = $response->getBody();
         $bodyobj = json_decode($responsebody->getContents());
 
+        $content = '';
+        foreach ($bodyobj->content as $contentpart) {
+            if ($contentpart->type === "text") {
+                $content = $contentpart->text;
+            }
+        }
+
         return [
             'success' => true,
             'id' => $bodyobj->id,
             'fingerprint' => null,
-            'generatedcontent' => $bodyobj->content[0]->text,
+            'generatedcontent' => $content,
             'finishreason' => $bodyobj->stop_reason,
             'prompttokens' => $bodyobj->usage->input_tokens,
             'completiontokens' => $bodyobj->usage->output_tokens,

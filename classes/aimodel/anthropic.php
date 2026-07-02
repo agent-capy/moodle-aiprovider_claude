@@ -31,6 +31,11 @@ class anthropic extends base {
      */
     public static function get_models(): array {
         return [
+            'claude-opus-4-8' => self::create_model(
+                'claude-opus-4-8',
+                definition::MODEL_TYPE_TEXT,
+                self::get_settings(128000, ['temperature']),
+            ),
             'claude-opus-4-7' => self::create_model(
                 'claude-opus-4-7',
                 definition::MODEL_TYPE_TEXT,
@@ -51,23 +56,13 @@ class anthropic extends base {
                 definition::MODEL_TYPE_TEXT,
                 self::get_settings(32000),
             ),
-            'claude-opus-4-20250514' => self::create_model(
-                'claude-opus-4-20250514',
-                definition::MODEL_TYPE_TEXT,
-                self::get_settings(32000),
-            ),
             'claude-sonnet-4-6' => self::create_model(
                 'claude-sonnet-4-6',
                 definition::MODEL_TYPE_TEXT,
-                self::get_settings(64000),
+                self::get_settings(128000),
             ),
             'claude-sonnet-4-5-20250929' => self::create_model(
                 'claude-sonnet-4-5-20250929',
-                definition::MODEL_TYPE_TEXT,
-                self::get_settings(64000),
-            ),
-            'claude-sonnet-4-20250514' => self::create_model(
-                'claude-sonnet-4-20250514',
                 definition::MODEL_TYPE_TEXT,
                 self::get_settings(64000),
             ),
@@ -75,6 +70,11 @@ class anthropic extends base {
                 'claude-haiku-4-5-20251001',
                 definition::MODEL_TYPE_TEXT,
                 self::get_settings(64000),
+            ),
+            'claude-fable-5' => self::create_model(
+                'claude-fable-5',
+                definition::MODEL_TYPE_TEXT,
+                self::get_settings(128000, ['temperature']),
             ),
         ];
     }

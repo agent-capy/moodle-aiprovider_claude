@@ -54,13 +54,13 @@ $string['extraparams_help'] = 'Extra parameters can be configured here. We suppo
 }
 </pre>';
 $string['invalidjson'] = 'Invalid JSON string';
+$string['model_claude-fable-5'] = 'claude-fable-5';
 $string['model_claude-haiku-4-5-20251001'] = 'claude-haiku-4-5-20251001';
-$string['model_claude-opus-4-1-20250805'] = 'claude-opus-4-1-20250805';
-$string['model_claude-opus-4-20250514'] = 'claude-opus-4-20250514 (Deprecated)';
+$string['model_claude-opus-4-1-20250805'] = 'claude-opus-4-1-20250805 (Deprecated)';
 $string['model_claude-opus-4-5-20251101'] = 'claude-opus-4-5-20251101';
 $string['model_claude-opus-4-6'] = 'claude-opus-4-6';
 $string['model_claude-opus-4-7'] = 'claude-opus-4-7';
-$string['model_claude-sonnet-4-20250514'] = 'claude-sonnet-4-20250514 (Deprecated)';
+$string['model_claude-opus-4-8'] = 'claude-opus-4-8';
 $string['model_claude-sonnet-4-5-20250929'] = 'claude-sonnet-4-5-20250929';
 $string['model_claude-sonnet-4-6'] = 'claude-sonnet-4-6';
 $string['pluginname'] = 'Claude API Provider';

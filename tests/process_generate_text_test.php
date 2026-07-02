@@ -91,7 +91,7 @@ final class process_generate_text_test extends \advanced_testcase {
         $defaultactionconfig = [
             $actionclass => [
                 'settings' => [
-                    'model' => 'claude-sonnet-4-5-20250929',
+                    'model' => 'claude-fable-5',
                     'endpoint' => 'https://api.anthropic.com/v1/messages',
                 ],
             ],
@@ -157,7 +157,7 @@ final class process_generate_text_test extends \advanced_testcase {
 
         $body = (object) json_decode($request->getBody()->getContents());
 
-        $this->assertEquals('claude-sonnet-4-5-20250929', $body->model);
+        $this->assertEquals('claude-fable-5', $body->model);
         $this->assertEquals('0.5', $body->temperature);
         $this->assertEquals('100', $body->max_tokens);
 
@@ -239,16 +239,16 @@ final class process_generate_text_test extends \advanced_testcase {
         $result = $method->invoke($processor, $response);
 
         $this->assertTrue($result['success']);
-        $this->assertEquals('msg_01Cd3y1A2pnisSFM82xR6uGg', $result['id']);
+        $this->assertEquals('msg_01TXAQww627LmSB5KAGToFLM', $result['id']);
         $this->assertEquals(null, $result['fingerprint']);
         $this->assertStringContainsString(
-            'Moodle is a free, open-source Learning Management System (LMS)',
+            'Moodle is a free online learning platform that teachers and schools use to create websites for their courses.',
             $result['generatedcontent']
         );
         $this->assertEquals('end_turn', $result['finishreason']);
-        $this->assertEquals('75', $result['prompttokens']);
-        $this->assertEquals('150', $result['completiontokens']);
-        $this->assertEquals('claude-sonnet-4-5-20250929', $result['model']);
+        $this->assertEquals('89', $result['prompttokens']);
+        $this->assertEquals('137', $result['completiontokens']);
+        $this->assertEquals('claude-fable-5', $result['model']);
     }
 
     /**
@@ -270,16 +270,16 @@ final class process_generate_text_test extends \advanced_testcase {
         $result = $method->invoke($processor);
 
         $this->assertTrue($result['success']);
-        $this->assertEquals('msg_01Cd3y1A2pnisSFM82xR6uGg', $result['id']);
+        $this->assertEquals('msg_01TXAQww627LmSB5KAGToFLM', $result['id']);
         $this->assertEquals(null, $result['fingerprint']);
         $this->assertStringContainsString(
-            'Moodle is a free, open-source Learning Management System (LMS)',
+            'Moodle is a free online learning platform that teachers and schools use to create websites for their courses.',
             $result['generatedcontent']
         );
         $this->assertEquals('end_turn', $result['finishreason']);
-        $this->assertEquals('75', $result['prompttokens']);
-        $this->assertEquals('150', $result['completiontokens']);
-        $this->assertEquals('claude-sonnet-4-5-20250929', $result['model']);
+        $this->assertEquals('89', $result['prompttokens']);
+        $this->assertEquals('137', $result['completiontokens']);
+        $this->assertEquals('claude-fable-5', $result['model']);
     }
 
     /**
@@ -293,12 +293,12 @@ final class process_generate_text_test extends \advanced_testcase {
 
         $response = [
             'success' => true,
-            'id' => 'msg_01Cd3y1A2pnisSFM82xR6uGg',
-            'generatedcontent' => 'Moodle is a free, open-source Learning Management System (LMS)',
+            'id' => 'msg_01TXAQww627LmSB5KAGToFLM',
+            'generatedcontent' => 'Moodle is a free online learning platform that teachers and schools use to create websites for their courses.',
             'finishreason' => 'end_turn',
             'prompttokens' => '75',
             'completiontokens' => '150',
-            'model' => 'claude-sonnet-4-5-20250929',
+            'model' => 'claude-fable-5',
         ];
 
         $result = $method->invoke($processor, $response);
@@ -414,7 +414,7 @@ final class process_generate_text_test extends \advanced_testcase {
             actionconfig: [
                 \core_ai\aiactions\generate_text::class => [
                     'settings' => [
-                        'model' => 'claude-sonnet-4-5-20250929',
+                        'model' => 'claude-fable-5',
                         'endpoint' => 'https://api.anthropic.com/v1/messages',
                         'systeminstruction' => get_string('action_generate_text_instruction', 'core_ai'),
                     ],
@@ -512,7 +512,7 @@ final class process_generate_text_test extends \advanced_testcase {
             actionconfig: [
                 \core_ai\aiactions\generate_text::class => [
                     'settings' => [
-                        'model' => 'claude-sonnet-4-5-20250929',
+                        'model' => 'claude-fable-5',
                         'endpoint' => 'https://api.anthropic.com/v1/messages',
                         'systeminstruction' => get_string('action_generate_text_instruction', 'core_ai'),
                     ],
