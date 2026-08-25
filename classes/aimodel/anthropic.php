@@ -51,11 +51,6 @@ class anthropic extends base {
                 definition::MODEL_TYPE_TEXT,
                 self::get_settings(64000),
             ),
-            'claude-opus-4-1-20250805' => self::create_model(
-                'claude-opus-4-1-20250805',
-                definition::MODEL_TYPE_TEXT,
-                self::get_settings(32000),
-            ),
             'claude-sonnet-4-6' => self::create_model(
                 'claude-sonnet-4-6',
                 definition::MODEL_TYPE_TEXT,
@@ -73,6 +68,11 @@ class anthropic extends base {
             ),
             'claude-fable-5' => self::create_model(
                 'claude-fable-5',
+                definition::MODEL_TYPE_TEXT,
+                self::get_settings(128000, ['temperature']),
+            ),
+            'claude-opus-5' => self::create_model(
+                'claude-opus-5',
                 definition::MODEL_TYPE_TEXT,
                 self::get_settings(128000, ['temperature']),
             ),
