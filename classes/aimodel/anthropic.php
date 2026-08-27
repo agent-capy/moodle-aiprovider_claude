@@ -76,6 +76,11 @@ class anthropic extends base {
                 definition::MODEL_TYPE_TEXT,
                 self::get_settings(128000, ['temperature']),
             ),
+            'claude-sonnet-5' => self::create_model(
+                'claude-sonnet-5',
+                definition::MODEL_TYPE_TEXT,
+                self::get_settings(128000, ['temperature']),
+            ),
         ];
     }
 

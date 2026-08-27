@@ -63,6 +63,7 @@ $string['model_claude-opus-4-8'] = 'claude-opus-4-8';
 $string['model_claude-opus-5'] = 'claude-opus-5';
 $string['model_claude-sonnet-4-5-20250929'] = 'claude-sonnet-4-5-20250929';
 $string['model_claude-sonnet-4-6'] = 'claude-sonnet-4-6';
+$string['model_claude-sonnet-5'] = 'claude-sonnet-5';
 $string['pluginname'] = 'Claude API Provider';
 $string['privacy:metadata'] = 'The Claude API provider plugin does not store any personal data.';
 $string['privacy:metadata:aiprovider_claude:externalpurpose'] = 'This information is sent to the Claude API in order for a response to be generated. Your Claude account settings may change how Claude stores and retains this data. No user data is explicitly sent to Claude or stored in Moodle LMS by this plugin.';
