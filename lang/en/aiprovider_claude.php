@@ -77,6 +77,10 @@ $string['settings_max_tokens'] = 'Max Tokens';
 $string['settings_max_tokens_help'] = 'The maximum number of tokens to generate in the response. Min: {$a->min}, Max: {$a->max}, Default: {$a->default}.';
 $string['settings_presence_penalty'] = 'presence_penalty';
 $string['settings_presence_penalty_help'] = 'The presence penalty encourages the model to use new words by increasing the likelihood of choosing words it hasn\'t used before. A higher value makes the generated text more diverse, while a lower value allows more repetition.';
+$string['settings_prompt_caching'] = 'Prompt caching';
+$string['settings_prompt_caching_help'] = 'Send the system instruction as a cacheable block so that repeated requests reuse it instead of reprocessing it.
+
+This only helps when both conditions hold: the system instruction is long enough to reach Anthropic\'s minimum cacheable length, and requests arrive close enough together to hit the cache before it expires. A cache write costs more than an uncached request, so enabling this on a site with a short system instruction or with only occasional AI use can increase costs rather than reduce them. Leave it off unless your site sends similar requests frequently.';
 $string['settings_stop_sequences'] = 'Stop Sequence';
 $string['settings_stop_sequences_help'] = 'Specify a character sequence to indicate where the model should stop';
 $string['settings_temperature'] = 'Temperature';

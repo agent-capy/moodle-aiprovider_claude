@@ -138,6 +138,52 @@ final class process_generate_text_test extends \advanced_testcase {
     }
 
     /**
+     * Test create_request_object sends the system instruction as a plain string by default.
+     */
+    public function test_create_request_object_without_prompt_caching(): void {
+        $processor = new process_generate_text($this->provider, $this->action);
+
+        $method = new \ReflectionMethod($processor, 'create_request_object');
+        $request = $method->invoke($processor, 1);
+
+        $body = (object) json_decode($request->getBody()->getContents());
+
+        // Prompt caching is off by default, so system stays a plain string.
+        $this->assertIsString($body->system);
+        $this->assertObjectNotHasProperty('prompt_caching', $body);
+    }
+
+    /**
+     * Test create_request_object marks the system instruction as cacheable when enabled.
+     */
+    public function test_create_request_object_with_prompt_caching(): void {
+        $instruction = get_string('action_generate_text_instruction', 'core_ai');
+        $provider = $this->create_provider(
+            actionclass: \core_ai\aiactions\generate_text::class,
+            actionconfig: [
+                'systeminstruction' => $instruction,
+                'prompt_caching' => 1,
+            ],
+        );
+        $processor = new process_generate_text($provider, $this->action);
+
+        $method = new \ReflectionMethod($processor, 'create_request_object');
+        $request = $method->invoke($processor, 1);
+
+        $body = (object) json_decode($request->getBody()->getContents());
+
+        // The system instruction becomes a single cacheable text block.
+        $this->assertIsArray($body->system);
+        $this->assertCount(1, $body->system);
+        $this->assertEquals('text', $body->system[0]->type);
+        $this->assertEquals($instruction, $body->system[0]->text);
+        $this->assertEquals('ephemeral', $body->system[0]->cache_control->type);
+
+        // The setting itself must not leak into the request body.
+        $this->assertObjectNotHasProperty('prompt_caching', $body);
+    }
+
+    /**
      * Test create_request_object with extra model settings.
      */
     public function test_create_request_object_with_model_settings(): void {

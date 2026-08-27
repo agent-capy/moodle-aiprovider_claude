@@ -81,8 +81,19 @@ abstract class abstract_processor extends process_base {
             $settings['systeminstruction'],
             $settings['providerid'],
             $settings['modelextraparams'],
+            $settings['prompt_caching'],
         );
         return $settings;
+    }
+
+    /**
+     * Check whether prompt caching is enabled for this action.
+     *
+     * @return bool True if the system instruction should be sent as a cacheable block.
+     */
+    protected function is_prompt_caching_enabled(): bool {
+        $settings = $this->provider->actionconfig[$this->action::class]['settings'];
+        return !empty($settings['prompt_caching']);
     }
 
     /**

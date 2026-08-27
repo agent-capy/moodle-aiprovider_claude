@@ -111,6 +111,16 @@ class anthropic extends base {
                 true,
                 $maxtokensmax,
             ),
+            // Prompt caching – Reuse the cached system instruction across requests.
+            'prompt_caching' => self::setting(
+                'settings_prompt_caching',
+                PARAM_BOOL,
+                'settings_prompt_caching',
+                [],
+                false,
+                null,
+                'advcheckbox',
+            ),
             // Stop Sequences – Specify a character sequence to indicate where the model should stop.
             'stop_sequences' => self::setting(
                 'settings_stop_sequences',

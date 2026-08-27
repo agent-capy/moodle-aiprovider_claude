@@ -7,6 +7,7 @@ A Moodle AI provider plugin that integrates [Claude AI](https://platform.claude.
 - Text generation
 - Text summarisation
 - Text explanation
+- Optional prompt caching of the system instruction
 
 ## Requirements
 

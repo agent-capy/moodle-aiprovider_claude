@@ -48,7 +48,19 @@ class process_generate_text extends abstract_processor {
         // If there is a system string available, use it.
         $systeminstruction = $this->get_system_instruction();
         if (!empty($systeminstruction)) {
-            $requestobj->system = $systeminstruction;
+            if ($this->is_prompt_caching_enabled()) {
+                // Caching is a prefix match, and the system instruction is the part of the
+                // request that stays identical across calls for this action, so the cache
+                // breakpoint belongs on it. The prompt text follows in messages and is not
+                // marked, so it stays outside the cached prefix.
+                $systemblock = new \stdClass();
+                $systemblock->type = 'text';
+                $systemblock->text = $systeminstruction;
+                $systemblock->cache_control = ['type' => 'ephemeral'];
+                $requestobj->system = [$systemblock];
+            } else {
+                $requestobj->system = $systeminstruction;
+            }
         }
         $requestobj->messages = [$userobj];
 

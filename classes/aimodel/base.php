@@ -42,9 +42,10 @@ abstract class base {
         array $helpa = [],
         bool $required = false,
         mixed $default = null,
+        string $elementtype = 'text',
     ): array {
         $setting = [
-            'elementtype' => 'text',
+            'elementtype' => $elementtype,
             'label' => [
                 'identifier' => $labelidentifier,
                 'component' => 'aiprovider_claude',
